@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  padding: 30px;
+}
+
+aside {
+  margin-bottom: 20px;
+}
+
+button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+input, select {
+  margin-right: 10px;
+  padding: 6px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
