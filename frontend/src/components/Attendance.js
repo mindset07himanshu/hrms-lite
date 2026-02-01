@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const API = "http://127.0.0.1:8000";
+const API = "https://hrms-backend-a3sp.onrender.com";
 
 export default function Attendance() {
   const [emps, setEmps] = useState([]);
