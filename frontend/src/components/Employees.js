@@ -24,9 +24,15 @@ export default function Employees() {
     axios.post(`${API}/employees`, form)
       .then(() => {
         load();
+        setForm({
+          employee_id: "",
+          name: "",
+          email: "",
+          department: ""
+        });
         alert("Employee Added");
       })
-      .catch(e => alert(e.response.data.detail));
+      .catch(e => alert(e.response?.data?.detail || "Error"));
   };
 
   const del = id => {
@@ -37,16 +43,37 @@ export default function Employees() {
     <div>
       <h2>Employees</h2>
 
-      <input placeholder="Employee ID" onChange={e => setForm({...form, employee_id: e.target.value})}/>
-      <input placeholder="Name" onChange={e => setForm({...form, name: e.target.value})}/>
-      <input placeholder="Email" onChange={e => setForm({...form, email: e.target.value})}/>
-      <input placeholder="Department" onChange={e => setForm({...form, department: e.target.value})}/>
+      <input
+        placeholder="Employee ID"
+        value={form.employee_id}
+        onChange={e => setForm({ ...form, employee_id: e.target.value })}
+      />
+
+      <input
+        placeholder="Name"
+        value={form.name}
+        onChange={e => setForm({ ...form, name: e.target.value })}
+      />
+
+      <input
+        placeholder="Email"
+        value={form.email}
+        onChange={e => setForm({ ...form, email: e.target.value })}
+      />
+
+      <input
+        placeholder="Department"
+        value={form.department}
+        onChange={e => setForm({ ...form, department: e.target.value })}
+      />
 
       <button onClick={add}>Add Employee</button>
 
+      <hr />
+
       {employees.map(e => (
         <div key={e.id}>
-          {e.name} ({e.department})
+          {e.name} - {e.employee_id}
           <button onClick={() => del(e.employee_id)}>Delete</button>
         </div>
       ))}
